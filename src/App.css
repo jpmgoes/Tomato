@@ -1,38 +1,140 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap');
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Caveat Brush', cursive;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  color:rgb(62, 62, 62);
+  color: #2f0103;
+}
+
+body {
+  margin: 0;
+  font-family: 'Caveat Brush', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  background-color: rgb(214, 211, 255);
+  
+  height: 100vh;
+  width: 100vw;
+
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.block-bigger {
+  display: grid;
+  justify-content: center;
+
+  background-color: #f1f4ff;
+  
+  max-width: 1000px;
+
+  height: 70vh;
+  width: 70vw;
+  
+  -webkit-box-shadow: 1px 1px 16px 10px rgba(0,0,0,0.001); 
+  box-shadow: 1px 1px 16px 10px rgba(0,0,0,0.01);
+  border-radius: 10px;
+
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header {
+  height: 410px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+h1{
+  font-size: 3rem;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.logo-area{
+  display: grid;
+  width: 100%;
+  height: 30%;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.logo{
+  width: 166px;
+  height: 184.5px;
+  margin-left: 45px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.mqtt-info {
+  margin-top: -80px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8vw;
+}
+ .info-container{
+   width: 150px;
+ }
+/* 720 */
+
+@media only screen and (max-width: 720px) {
+  .block-bigger {
+    height: 100vh;
+    width: 100vw;
   }
-  to {
-    transform: rotate(360deg);
-  }
+}
+.darkmode-tongle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+
+/* tongle */
+.toggle-container {
+  grid-area: s;
+}
+.toggle-container > input[type="checkbox"] {
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggle-container > label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 52px;
+  height: 27px;
+  background: grey;
+  float: right;
+  border-radius: 100px;
+  position: relative;
+}
+
+.toggle-container > label:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+
+.toggle-container > input:checked + label {
+  background: #ff1928;
+}
+
+.toggle-container > input:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+
+.toggle-container > label:active:after {
+  width: 45px;
+}
+.info-icon {
+  width: 45px;
 }
