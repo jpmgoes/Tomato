@@ -12,6 +12,9 @@ import lightTomatoGreen from "./img/light-tomato-green.png";
 import darkTomatoGreen from "./img/dark-tomato-green.png";
 import lightTomatoSet from "./img/light-tomato-set.png";
 import darkTomatoSet from "./img/dark-tomato-set.png";
+import sauceTomato from "./img/sauce-tomato.png";
+import darkTomatoPodre from "./img/dark-tomato-podre.png";
+import lightTomatoPodre from "./img/light-tomato-podre.png";
 
 function App() {
   const [theme, setTheme] = useState("light");
@@ -20,25 +23,47 @@ function App() {
     darkTomatoGreen,
     darkTomatoSet,
     darkLogo,
+    sauceTomato,
+    darkTomatoPodre,
   ]);
-  const topicos = ["testtopic/1", "testtopic/2", "testtopic/4"];
+  const imgAlt = [
+    "Tomate Verde",
+    "Todos os Tomates",
+    "Tomate Maduro",
+    "Molho de Tomate",
+    "Tomate Podre",
+  ];
+
+  const topicos = [
+    "tomatometro/green",
+    "tomatometro/total",
+    "tomatometro/red",
+    "tomatometro/sauce",
+    "tomatometro/podre",
+  ];
 
   const themeToggler = () => {
     if (theme === "light") {
       setTheme("dark");
       setLogo(lightLogo);
-      setinfoTomatoIcon([lightTomatoGreen, lightTomatoSet, lightLogo]);
+      setinfoTomatoIcon([
+        lightTomatoGreen,
+        lightTomatoSet,
+        lightLogo,
+        sauceTomato,
+        lightTomatoPodre,
+      ]);
     } else {
       setTheme("light");
       setLogo(darkLogo);
-      setinfoTomatoIcon([darkTomatoGreen, darkTomatoSet, darkLogo]);
+      setinfoTomatoIcon([
+        darkTomatoGreen,
+        darkTomatoSet,
+        darkLogo,
+        sauceTomato,
+        darkTomatoPodre,
+      ]);
     }
-  };
-
-  const showAllInfo = (_, index) => {
-    return (
-      <InfoContainer img={infoTomatoIcon[index]} topico={topicos[index]} />
-    );
   };
 
   return (
@@ -48,7 +73,15 @@ function App() {
         <Header themeToggler={themeToggler} logo={logo} />
         <div className="info-area">
           <div className="mqtt-info">
-            {Array(3).fill(null).map(showAllInfo)}
+            {infoTomatoIcon.map((img, index) => {
+              return (
+                <InfoContainer
+                  img={img}
+                  alt={imgAlt[index]}
+                  topico={topicos[index]}
+                />
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,29 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import mqtt from "mqtt";
 
-function Mqtt({ topicName }) {
+function Mqtt(props) {
+  const { topicName } = props;
+
   const topicToSub = topicName;
-  // const [_, setConnectionStatus] = React.useState(false);
-  const [messages, setMessages] = React.useState([]);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     const client = mqtt.connect("mqtt://broker.hivemq.com:8000/mqtt");
     client.on("connect", () => {
       client.subscribe(topicToSub);
-      // setConnectionStatus(true);
     });
 
     client.on("message", (topic, payload, packet) => {
-      setMessages(messages.concat(payload.toString()));
+      const result = messages.concat(payload.toString());
+      setMessages(result);
     });
+
     // eslint-disable-next-line
   }, []);
-  console.log();
   return (
     <>
-      {messages.map((message) => (
-        <h2>{!!Number(message) || Number(message) <= 0 ? message : 0}</h2>
+      {messages.map((message, index) => (
+        <h2 key={index}>
+          {!!Number(message) || Number(message) <= 0 ? message : 0}
+        </h2>
       ))}
     </>
   );

@@ -70,19 +70,20 @@ h1{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 8vw;
+  gap: 2vw;
 }
  .info-container{
    width: 150px;
  }
 /* 720 */
 
-@media only screen and (max-width: 720px) {
+@media only screen and (max-width: 1310px) {
   .block-bigger {
     height: 100vh;
     width: 100vw;
   }
 }
+
 .darkmode-tongle{
   display: flex;
   justify-content: center;
